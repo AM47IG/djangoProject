@@ -7,9 +7,9 @@
 <body>
     <h1>Игры</h1>
     <ul>
-        {% for game in games %}
-        <li>{{ game }} <button>Купить</button></li>
-        {% endfor %}
+        <li>{{ games.first }} <button>Купить</button></li>
+        <li>{{ games.second }} <button>Купить</button></li>
+        <li>{{ games.third }} <button>Купить</button></li>
     </ul>
     <button><a href="/task3/platform">Вернуться обратно</a></button>
 </body>

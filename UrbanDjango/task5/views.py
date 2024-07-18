@@ -13,12 +13,12 @@ def sign_up_by_html(request):
         age = int(request.POST.get('age')) >= 18
         if username and password and age:
             return HttpResponse(f'Приветствуем, {request.POST.get('username')}!')
-        if not age:
-            info['error'] = 'Вы должны быть старше 18'
-        if not password:
-            info['error'] = 'Пароли не совпадают'
         if not username:
             info['error'] = 'Пользователь уже существует'
+        elif not password:
+            info['error'] = 'Пароли не совпадают'
+        elif not age:
+            info['error'] = 'Вы должны быть старше 18'
     return render(request, 'fifth_task/registration_page.html', context=info)
 
 
@@ -34,10 +34,10 @@ def sign_up_by_django(request):
             age = form.cleaned_data.get('age') >= 18
             if username and password and age:
                 return HttpResponse(f'Приветствуем, {form.cleaned_data.get('username')}!')
-            if not age:
-                info['error'] = 'Вы должны быть старше 18'
-            if not password:
-                info['error'] = 'Пароли не совпадают'
             if not username:
                 info['error'] = 'Пользователь уже существует'
+            elif not password:
+                info['error'] = 'Пароли не совпадают'
+            elif not age:
+                info['error'] = 'Вы должны быть старше 18'
     return render(request, 'fifth_task/registration_page.html', context=info)

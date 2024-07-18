@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница регистрации</title>
+</head>
+<body>
+    <h2>{{ error }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% if form %}
+            {{ form.as_table }}
+
+        {% else %}
+            <label for="username">Введите Ваше имя:</label>
+            <input type="text" id="username" name="username" maxlength="30" required>
+
+            <label for="password">Введите пароль:</label>
+            <input type="password" id="password" name="password" minlength="8" required>
+
+            <label for="repeat_password">Повторите пароль:</label>
+            <input type="password" id="repeat_password" name="repeat_password" minlength="8" required>
+
+            <label for="age">Возраст:</label>
+            <input type="text" id="age" name="age" maxlength="3" required>
+
+        {% endif%}
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+    <p></p>
+    <table border="1px rgb(140 140 140)">
+        <tr>
+            <th><a href="/">HTML форма</a></th><th><a href="/django_sign_up">Django форма</a></th>
+        </tr>
+    </table>
+</body>
+</html>
